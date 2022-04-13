@@ -1,8 +1,12 @@
-import logo from "./logo.svg";
 import "./App.css";
+import TicTacToe from "./TicTacToe/Board/TicTacToe";
 
 function App() {
-  return <div className="App"></div>;
+  return (
+    <div id="app" className="App">
+      <TicTacToe />
+    </div>
+  );
 }
 
 export default App;
