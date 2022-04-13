@@ -1,5 +1,5 @@
 import React from "react";
-import Cell from "../Cell/Cell";
+import Row from "../Row/Row";
 import styled from "styled-components";
 
 export default function TicTacToe() {
@@ -7,21 +7,9 @@ export default function TicTacToe() {
     <div>
       <table id="table">
         <tbody>
-          <tr>
-            <Cell />
-            <Cell />
-            <Cell />
-          </tr>
-          <tr>
-            <Cell />
-            <Cell />
-            <Cell />
-          </tr>
-          <tr>
-            <Cell />
-            <Cell />
-            <Cell />
-          </tr>
+          <Row />
+          <Row />
+          <Row />
         </tbody>
       </table>
     </div>
