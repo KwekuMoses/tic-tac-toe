@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Row from "../Row/Row";
-import styled from "styled-components";
 
 export default function TicTacToe() {
   const [symbol, setSymbol] = useState("X");
