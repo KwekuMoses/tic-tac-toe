@@ -28,7 +28,7 @@ test("Check That Cells Append Children On Click", async () => {
     expect(cellElements[i].innerHTML).not.toBe("undefined");
   }
 });
-test("Check That Everyother Cell is X and everyother Cell is O", async () => {
+test("Check That Everyother Cell is X and everyother Cell is O when clicked", async () => {
   const user = userEvent.setup();
 
   const renderer = new ShallowRenderer();

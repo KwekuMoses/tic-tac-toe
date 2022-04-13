@@ -10,8 +10,14 @@ const Td = styled.td`
 function test(e, symbol, setSymbol) {
   var z = document.createElement("p"); // is a node
   e.target.appendChild(z);
-  z.innerHTML = "X";
+  z.innerHTML = symbol;
+  if (symbol === "X") {
+    setSymbol("O");
+  } else {
+    setSymbol("X");
+  }
 }
-export default function Cell() {
-  return <Td role="cell" onClick={(e) => test(e)}></Td>;
+
+export default function Cell({ symbol, setSymbol }) {
+  return <Td role="cell" onClick={(e) => test(e, symbol, setSymbol)}></Td>;
 }

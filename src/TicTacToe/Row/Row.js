@@ -1,12 +1,14 @@
 import React from "react";
 import Cell from "../Cell/Cell";
 
-export default function Row() {
+export default function Row({ symbol, setSymbol }) {
   return (
     <tr>
-      <Cell />
-      <Cell />
-      <Cell />
+      <p>{symbol}</p>
+
+      <Cell symbol={symbol} setSymbol={setSymbol} />
+      <Cell symbol={symbol} setSymbol={setSymbol} />
+      <Cell symbol={symbol} setSymbol={setSymbol} />
     </tr>
   );
 }
