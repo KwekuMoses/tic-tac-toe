@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 const Td = styled.td`
@@ -7,11 +7,11 @@ const Td = styled.td`
   height: 100px;
 `;
 
-function test(e) {
+function test(e, symbol, setSymbol) {
   var z = document.createElement("p"); // is a node
-
   e.target.appendChild(z);
+  z.innerHTML = "X";
 }
 export default function Cell() {
-  return <td role="cell" onClick={(e) => test(e)}></td>;
+  return <Td role="cell" onClick={(e) => test(e)}></Td>;
 }
