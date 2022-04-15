@@ -9,7 +9,7 @@ export default function TicTacToe() {
     let nodeListCells = document.querySelectorAll("td");
     let cells = Array.from(nodeListCells);
     cells.map((cell, i) => {
-      cell.setAttribute("data-testid", i);
+      return cell.setAttribute("data-testid", i);
     });
   }, [turn]);
 
