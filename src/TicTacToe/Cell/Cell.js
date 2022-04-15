@@ -7,20 +7,18 @@ const Td = styled.td`
   height: 100px;
 `;
 
-const handleClick = (e, symbol, setSymbol) => {
+const handleClick = (e, turn, setTurn) => {
   if (!e.target.getAttribute("checked")) {
     e.target.setAttribute("checked", true);
-    e.target.innerHTML = symbol;
-    if (symbol === "X") {
-      setSymbol("O");
+    e.target.innerHTML = turn;
+    if (turn === "X") {
+      setTurn("O");
     } else {
-      setSymbol("X");
+      setTurn("X");
     }
   }
 };
 
-export default function Cell({ symbol, setSymbol }) {
-  return (
-    <Td role="cell" onClick={(e) => handleClick(e, symbol, setSymbol)}></Td>
-  );
+export default function Cell({ turn, setTurn }) {
+  return <Td role="cell" onClick={(e) => handleClick(e, turn, setTurn)}></Td>;
 }

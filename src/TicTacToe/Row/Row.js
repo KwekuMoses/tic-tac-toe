@@ -1,12 +1,12 @@
 import React from "react";
 import Cell from "../Cell/Cell";
 
-export default function Row({ symbol, setSymbol }) {
+export default function Row({ turn, setTurn }) {
   return (
     <tr>
-      <Cell symbol={symbol} setSymbol={setSymbol} />
-      <Cell symbol={symbol} setSymbol={setSymbol} />
-      <Cell symbol={symbol} setSymbol={setSymbol} />
+      <Cell turn={turn} setTurn={setTurn} />
+      <Cell turn={turn} setTurn={setTurn} />
+      <Cell turn={turn} setTurn={setTurn} />
     </tr>
   );
 }

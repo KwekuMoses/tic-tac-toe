@@ -4,10 +4,8 @@ import React from "react";
 import userEvent from "@testing-library/user-event";
 import Cell from "./Cell";
 import App from "../../App";
-import TicTacToe from "../Board/TicTacToe";
-import { getByText, render, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import ShallowRenderer from "react-test-renderer/shallow";
-import { shallow } from "enzyme";
 
 beforeEach(() => {
   render(<App />);
@@ -45,8 +43,8 @@ test("Check That Everyother Cell is X and everyother Cell is O when clicked", as
     }
   }
 });
-
-test("Cell Can only be pressed once", async () => {
+test("Check That The Turn Indicator Display Correctly", async () => {});
+test("Cell Can Only Be Pressed Once", async () => {
   const user = userEvent.setup();
 
   const cellElements = screen.getAllByRole("cell");
