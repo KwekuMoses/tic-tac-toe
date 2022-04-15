@@ -4,8 +4,10 @@ import React from "react";
 import userEvent from "@testing-library/user-event";
 import Cell from "./Cell";
 import App from "../../App";
+import TicTacToe from "../Board/TicTacToe";
 import { getByText, render, screen } from "@testing-library/react";
 import ShallowRenderer from "react-test-renderer/shallow";
+import { shallow } from "enzyme";
 
 beforeEach(() => {
   render(<App />);
@@ -32,17 +34,30 @@ test("Check That Cells Append Children On Click", async () => {
 test("Check That Everyother Cell is X and everyother Cell is O when clicked", async () => {
   const user = userEvent.setup();
 
-  const renderer = new ShallowRenderer();
-  renderer.render(<Cell />);
-
   const cellElements = screen.getAllByRole("cell");
   for (let i = 0; i < cellElements.length; i++) {
     await user.click(cellElements[i]);
 
     if (i % 2 === 0) {
-      expect(cellElements[i].innerHTML).toBe("<p>X</p>");
+      expect(cellElements[i].innerHTML).toBe("X");
     } else {
-      expect(cellElements[i].innerHTML).toBe("<p>O</p>");
+      expect(cellElements[i].innerHTML).toBe("O");
+    }
+  }
+});
+
+test("Cell Can only be pressed once", async () => {
+  const user = userEvent.setup();
+
+  const cellElements = screen.getAllByRole("cell");
+  for (let i = 0; i < cellElements.length; i++) {
+    await user.click(cellElements[i]);
+    await user.click(cellElements[i]);
+
+    if (i % 2 === 0) {
+      expect(cellElements[i].innerHTML).toBe("X");
+    } else {
+      expect(cellElements[i].innerHTML).toBe("O");
     }
   }
 });

@@ -7,17 +7,20 @@ const Td = styled.td`
   height: 100px;
 `;
 
-function test(e, symbol, setSymbol) {
-  var z = document.createElement("p"); // is a node
-  e.target.appendChild(z);
-  z.innerHTML = symbol;
-  if (symbol === "X") {
-    setSymbol("O");
-  } else {
-    setSymbol("X");
+const handleClick = (e, symbol, setSymbol) => {
+  if (!e.target.getAttribute("checked")) {
+    e.target.setAttribute("checked", true);
+    e.target.innerHTML = symbol;
+    if (symbol === "X") {
+      setSymbol("O");
+    } else {
+      setSymbol("X");
+    }
   }
-}
+};
 
 export default function Cell({ symbol, setSymbol }) {
-  return <Td role="cell" onClick={(e) => test(e, symbol, setSymbol)}></Td>;
+  return (
+    <Td role="cell" onClick={(e) => handleClick(e, symbol, setSymbol)}></Td>
+  );
 }
