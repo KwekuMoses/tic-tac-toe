@@ -47,7 +47,7 @@ export default function Cell({
           let cells = document.querySelectorAll(".cell");
           console.log(cells);
           Array.from(cells).map((cell) => {
-            cell.setAttribute("onClick", "");
+            return cell.setAttribute("onClick", "");
           });
         }
       });
