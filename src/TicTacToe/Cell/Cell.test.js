@@ -1,5 +1,3 @@
-// hello.test.js
-
 import React from "react";
 import userEvent from "@testing-library/user-event";
 import Cell from "./Cell";
