@@ -4,23 +4,45 @@ import styled from "styled-components";
 
 export default function TicTacToe() {
   const [turn, setTurn] = useState("X");
+  const [cells, setCells] = useState(Array(9).fill(""));
+  const [winmessage, setWinmessage] = useState("");
 
+  // Assign each cell a unique Id
   useEffect(() => {
     let nodeListCells = document.querySelectorAll("td");
     let cells = Array.from(nodeListCells);
     cells.map((cell, i) => {
       return cell.setAttribute("data-testid", i);
     });
-  }, [turn]);
+  }, []);
 
   return (
     <Container>
       <TurnIndicator>Turn: {turn}</TurnIndicator>
+      <WinAnnouncer role="winner">{winmessage}</WinAnnouncer>
       <Table id="table">
         <tbody>
-          <Row turn={turn} setTurn={setTurn} />
-          <Row turn={turn} setTurn={setTurn} />
-          <Row turn={turn} setTurn={setTurn} />
+          <Row
+            cells={cells}
+            setCells={setCells}
+            turn={turn}
+            setTurn={setTurn}
+            setWinmessage={setWinmessage}
+          />
+          <Row
+            cells={cells}
+            setCells={setCells}
+            turn={turn}
+            setTurn={setTurn}
+            setWinmessage={setWinmessage}
+          />
+          <Row
+            cells={cells}
+            setCells={setCells}
+            turn={turn}
+            setTurn={setTurn}
+            setWinmessage={setWinmessage}
+          />
         </tbody>
       </Table>
     </Container>
@@ -43,6 +65,12 @@ const Table = styled.table`
 `;
 
 const TurnIndicator = styled.p`
+  color: black;
+  grid-column: 2;
+  grid-row: 1;
+  place-self: end center;
+`;
+const WinAnnouncer = styled.span`
   color: black;
   grid-column: 2;
   grid-row: 1;

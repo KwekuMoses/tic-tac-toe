@@ -43,7 +43,7 @@ test("Check That Everyother Cell is X and everyother Cell is O when clicked", as
     }
   }
 });
-test("Check That The Turn Indicator Display Correctly", async () => {});
+
 test("Cell Can Only Be Pressed Once", async () => {
   const user = userEvent.setup();
 
@@ -58,4 +58,26 @@ test("Cell Can Only Be Pressed Once", async () => {
       expect(cellElements[i].innerHTML).toBe("O");
     }
   }
+});
+
+test("Check That Winner Is Announced On Winning Combination", async () => {
+  const userX = userEvent.setup();
+  const userO = userEvent.setup();
+  const winElement = screen.queryByText(/win/i);
+
+  expect(winElement).not.toBeInTheDocument();
+
+  const cellElementsNodelist = screen.getAllByRole("cell");
+  const winner = screen.getByRole("winner");
+  const cellElements = Array.from(cellElementsNodelist);
+  await userX.click(cellElements[0]);
+  await userO.click(cellElements[8]);
+
+  await userX.click(cellElements[1]);
+  await userO.click(cellElements[4]);
+
+  await userX.click(cellElements[2]);
+  await userO.click(cellElements[7]);
+
+  expect(winner.innerHTML).toBe("win");
 });
