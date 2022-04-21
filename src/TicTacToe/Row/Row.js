@@ -1,7 +1,14 @@
 import React from "react";
 import Cell from "../Cell/Cell";
 
-export default function Row({ cells, setCells, turn, setTurn, setWinmessage }) {
+export default function Row({
+  cells,
+  setCells,
+  turn,
+  setTurn,
+  setWinmessage,
+  winmessage,
+}) {
   return (
     <tr>
       <Cell
@@ -10,6 +17,7 @@ export default function Row({ cells, setCells, turn, setTurn, setWinmessage }) {
         turn={turn}
         setTurn={setTurn}
         setWinmessage={setWinmessage}
+        winmessage={winmessage}
       />
       <Cell
         cells={cells}
@@ -17,6 +25,7 @@ export default function Row({ cells, setCells, turn, setTurn, setWinmessage }) {
         turn={turn}
         setTurn={setTurn}
         setWinmessage={setWinmessage}
+        winmessage={winmessage}
       />
       <Cell
         cells={cells}
@@ -24,6 +33,7 @@ export default function Row({ cells, setCells, turn, setTurn, setWinmessage }) {
         turn={turn}
         setTurn={setTurn}
         setWinmessage={setWinmessage}
+        winmessage={winmessage}
       />
     </tr>
   );

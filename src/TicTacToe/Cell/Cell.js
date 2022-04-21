@@ -7,6 +7,7 @@ export default function Cell({
   turn,
   setTurn,
   setWinmessage,
+  winmessage,
 }) {
   const checkForWinner = (squares) => {
     let combos = {
@@ -42,7 +43,12 @@ export default function Cell({
           squares[pattern[0]] === squares[pattern[1]] &&
           squares[pattern[1]] === squares[[pattern[2]]]
         ) {
-          setWinmessage("win");
+          setWinmessage(turn + " wins!");
+          let cells = document.querySelectorAll(".cell");
+          console.log(cells);
+          Array.from(cells).map((cell) => {
+            cell.setAttribute("onClick", "");
+          });
         }
       });
     }
@@ -66,7 +72,15 @@ export default function Cell({
     setCells(squares);
   };
 
-  return <Td role="cell" onClick={(e) => handleClick(e, turn, setTurn)}></Td>;
+  return winmessage === "" ? (
+    <Td
+      className="cell"
+      role="cell"
+      onClick={(e) => handleClick(e, turn, setTurn)}
+    ></Td>
+  ) : (
+    <Td className="cell" role="cell"></Td>
+  );
 }
 
 const Td = styled.td`

@@ -33,7 +33,7 @@ test("Check That Everyother Cell is X and everyother Cell is O when clicked", as
   const user = userEvent.setup();
 
   const cellElements = screen.getAllByRole("cell");
-  for (let i = 0; i < cellElements.length; i++) {
+  for (let i = 0; i < 6; i++) {
     await user.click(cellElements[i]);
 
     if (i % 2 === 0) {
@@ -48,7 +48,7 @@ test("Cell Can Only Be Pressed Once", async () => {
   const user = userEvent.setup();
 
   const cellElements = screen.getAllByRole("cell");
-  for (let i = 0; i < cellElements.length; i++) {
+  for (let i = 0; i < 6; i++) {
     await user.click(cellElements[i]);
     await user.click(cellElements[i]);
 
@@ -60,6 +60,7 @@ test("Cell Can Only Be Pressed Once", async () => {
   }
 });
 
+//@note Beroende av andra tester
 test("Check That Winner Is Announced On Winning Combination", async () => {
   const userX = userEvent.setup();
   const userO = userEvent.setup();
@@ -79,5 +80,5 @@ test("Check That Winner Is Announced On Winning Combination", async () => {
   await userX.click(cellElements[2]);
   await userO.click(cellElements[7]);
 
-  expect(winner.innerHTML).toBe("win");
+  expect(winner.innerHTML).toBe("X wins!");
 });

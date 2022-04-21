@@ -16,6 +16,10 @@ export default function TicTacToe() {
     });
   }, []);
 
+  const handleRestart = () => {
+    window.location.reload();
+  };
+
   return (
     <Container>
       <TurnIndicator>Turn: {turn}</TurnIndicator>
@@ -28,6 +32,7 @@ export default function TicTacToe() {
             turn={turn}
             setTurn={setTurn}
             setWinmessage={setWinmessage}
+            winmessage={winmessage}
           />
           <Row
             cells={cells}
@@ -35,6 +40,7 @@ export default function TicTacToe() {
             turn={turn}
             setTurn={setTurn}
             setWinmessage={setWinmessage}
+            winmessage={winmessage}
           />
           <Row
             cells={cells}
@@ -42,9 +48,15 @@ export default function TicTacToe() {
             turn={turn}
             setTurn={setTurn}
             setWinmessage={setWinmessage}
+            winmessage={winmessage}
           />
         </tbody>
       </Table>
+      {winmessage !== "" ? (
+        <Button onClick={() => handleRestart()}>Play Again</Button>
+      ) : (
+        ""
+      )}
     </Container>
   );
 }
@@ -75,4 +87,9 @@ const WinAnnouncer = styled.span`
   grid-column: 2;
   grid-row: 1;
   place-self: end center;
+`;
+
+const Button = styled.button`
+  grid-row: 3;
+  grid-column: 2;
 `;
