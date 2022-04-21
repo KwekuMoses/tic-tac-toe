@@ -3,7 +3,7 @@
 import React from "react";
 import userEvent from "@testing-library/user-event";
 import Cell from "./Cell";
-import App from "../../App";
+import App from "../App";
 import { render, screen } from "@testing-library/react";
 import ShallowRenderer from "react-test-renderer/shallow";
 
